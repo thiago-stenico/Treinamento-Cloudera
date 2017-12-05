@@ -1,6 +1,6 @@
 Evidências Laboratório
 
-Swappiness 1:
+********** Swappiness 1:
 
 [root@ip-172-31-23-126 vm]# cat swappiness
 1
@@ -22,7 +22,7 @@ Swappiness 1:
 1
 
 
-Huge Pages:
+********** Huge Pages:
 
 
 [root@ip-172-31-23-126 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
@@ -49,7 +49,7 @@ always madvise [never]
 always madvise [never]
 
 
-Interfaces:
+********** Interfaces:
 
 [root@ip-172-31-23-126 vm]# ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
@@ -158,8 +158,10 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-
+        
+        
+        
+********** Hosts: 
 
 
 
@@ -230,7 +232,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 
 
-
+********** NSCD e NTPD
 
 
 [root@ip-172-31-23-126 vm]# systemctl status nscd
