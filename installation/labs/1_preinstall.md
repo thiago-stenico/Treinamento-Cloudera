@@ -1,142 +1,476 @@
-```
-[root@ip-10-79-133-7 ~]# cat /proc/sys/vm/swappiness
+Evidências Laboratório
+
+Swappiness 1:
+
+[root@ip-172-31-23-126 vm]# cat swappiness
 1
-[root@ip-10-79-133-7 ~]# cat /etc/sysctl.conf
-# System default settings live in /usr/lib/sysctl.d/00-system.conf.
-# To override those settings, enter new settings here, or in an /etc/sysctl.d/<name>.conf file
-#
-# For more information, see sysctl.conf(5) and sysctl.d(5).
-vm.swappiness = 1
 
-[root@ip-10-79-133-7 ~]# mount -v
-sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
-proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
-devtmpfs on /dev type devtmpfs (rw,nosuid,size=7599028k,nr_inodes=1899757,mode=755)
-securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
-tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
-devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
-tmpfs on /run type tmpfs (rw,nosuid,nodev,mode=755)
-tmpfs on /sys/fs/cgroup type tmpfs (ro,nosuid,nodev,noexec,mode=755)
-cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd)
-pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
-cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)
-cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpuacct,cpu)
-cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)
-cgroup on /sys/fs/cgroup/net_cls type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls)
-cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)
-cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)
-cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)
-cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)
-cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)
-configfs on /sys/kernel/config type configfs (rw,relatime)
-/dev/xvda1 on / type xfs (rw,relatime,attr2,inode64,noquota)
-rpc_pipefs on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw,relatime)
-systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=31,pgrp=1,timeout=300,minproto=5,maxproto=5,direct)
-hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime)
-debugfs on /sys/kernel/debug type debugfs (rw,relatime)
-mqueue on /dev/mqueue type mqueue (rw,relatime)
-nfsd on /proc/fs/nfsd type nfsd (rw,relatime)
-tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,size=1497312k,mode=700,uid=1000,gid=1000)
-/dev/xvdb1 on /data type ext4 (rw,relatime,data=ordered)
 
-[root@ip-10-79-133-7 ~]# cat /sys/kernel/mm/transparent_hugepage/defrag
+[root@ip-172-31-26-157 vm]# cat swappiness
+1
+
+
+[root@ip-172-31-22-225 vm]# cat swappiness
+1
+
+
+[root@ip-172-31-21-240 vm]# cat swappiness
+1
+
+
+[root@ip-172-31-20-123 vm]# cat swappiness
+1
+
+
+Huge Pages:
+
+
+[root@ip-172-31-23-126 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
+[root@ip-172-31-23-126 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
 always madvise [never]
 
-[root@ip-10-79-133-7 ~]# ifconfig 
-eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 10.79.133.7  netmask 255.255.255.192  broadcast 10.79.133.63
-        inet6 fe80::2000:aff:fe4f:8507  prefixlen 64  scopeid 0x20<link>
-        ether 22:00:0a:4f:85:07  txqueuelen 1000  (Ethernet)
-        RX packets 603800  bytes 846611288 (807.3 MiB)
+
+[root@ip-172-31-26-157 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
+[root@ip-172-31-26-157 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
+always madvise [never]
+
+
+[root@ip-172-31-22-225 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
+[root@ip-172-31-22-225 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
+always madvise [never]
+
+[root@ip-172-31-21-240 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
+[root@ip-172-31-21-240 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
+always madvise [never]
+
+
+[root@ip-172-31-20-123 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
+[root@ip-172-31-20-123 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
+always madvise [never]
+
+
+Interfaces:
+
+[root@ip-172-31-23-126 vm]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.23.126  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::40e:f6ff:fe89:19ac  prefixlen 64  scopeid 0x20<link>
+        ether 06:0e:f6:89:19:ac  txqueuelen 1000  (Ethernet)
+        RX packets 116041  bytes 168991210 (161.1 MiB)
         RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 245779  bytes 17809463 (16.9 MiB)
+        TX packets 39649  bytes 2829660 (2.6 MiB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
 lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         inet 127.0.0.1  netmask 255.0.0.0
         inet6 ::1  prefixlen 128  scopeid 0x10<host>
-        loop  txqueuelen 0  (Local Loopback)
+        loop  txqueuelen 1  (Local Loopback)
         RX packets 6  bytes 416 (416.0 B)
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
-[root@ip-10-79-133-7 ~]# getent hosts
-127.0.0.1       localhost.localdomain localhost
-127.0.0.1       localhost6.localdomain6 localhost6
-10.79.133.7     srvsebclnx01.hadoop.local srvsebclnx01
-10.179.235.113  srvsebclnx02.hadoop.local srvsebclnx02
-10.180.35.164   srvsebclnx03.hadoop.local srvsebclnx03
-10.71.191.242   srvsebclnx04.hadoop.local srvsebclnx04
-10.79.131.18    srvsebclnx05.hadoop.local srvsebclnx05
 
-[root@ip-10-79-131-18 ~]# getent hosts srvsebclnx01
-10.79.133.7     srvsebclnx01.hadoop.local srvsebclnx01
-[root@ip-10-79-131-18 ~]# getent hosts srvsebclnx02
-10.179.235.113  srvsebclnx02.hadoop.local srvsebclnx02
-[root@ip-10-79-131-18 ~]# getent hosts srvsebclnx03
-10.180.35.164   srvsebclnx03.hadoop.local srvsebclnx03
-[root@ip-10-79-131-18 ~]# getent hosts srvsebclnx04
-10.71.191.242   srvsebclnx04.hadoop.local srvsebclnx04
-[root@ip-10-79-131-18 ~]# getent hosts srvsebclnx05
-10.79.131.18    srvsebclnx05.hadoop.local srvsebclnx05
-[root@ip-10-79-131-18 ~]# getent hosts 10.79.133.7
 
-[root@ip-10-79-133-7 ~]# systemctl status  nscd.service 
-? nscd.service - Name Service Cache Daemon
-   Loaded: loaded (/usr/lib/systemd/system/nscd.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-03 16:40:04 UTC; 11s ago
- Main PID: 22411 (nscd)
+[root@ip-172-31-26-157 vm]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.26.157  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::42e:69ff:feb8:f3a2  prefixlen 64  scopeid 0x20<link>
+        ether 06:2e:69:b8:f3:a2  txqueuelen 1000  (Ethernet)
+        RX packets 115204  bytes 168628237 (160.8 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 42732  bytes 3094957 (2.9 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 6  bytes 416 (416.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6  bytes 416 (416.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+
+
+[root@ip-172-31-22-225 vm]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.22.225  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::416:31ff:fe0a:84e  prefixlen 64  scopeid 0x20<link>
+        ether 06:16:31:0a:08:4e  txqueuelen 1000  (Ethernet)
+        RX packets 114382  bytes 168347846 (160.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 46055  bytes 3272124 (3.1 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 6  bytes 416 (416.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6  bytes 416 (416.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+
+
+[root@ip-172-31-21-240 vm]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.21.240  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::4fa:a7ff:fe04:fe9e  prefixlen 64  scopeid 0x20<link>
+        ether 06:fa:a7:04:fe:9e  txqueuelen 1000  (Ethernet)
+        RX packets 114494  bytes 168347108 (160.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 42555  bytes 2971896 (2.8 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 6  bytes 416 (416.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6  bytes 416 (416.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+
+[root@ip-172-31-20-123 vm]# ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.20.123  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::4bf:4fff:fefe:62b8  prefixlen 64  scopeid 0x20<link>
+        ether 06:bf:4f:fe:62:b8  txqueuelen 1000  (Ethernet)
+        RX packets 114424  bytes 168431349 (160.6 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 31223  bytes 2194219 (2.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 6  bytes 416 (416.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6  bytes 416 (416.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+
+
+[root@ip-172-31-23-126 vm]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+
+127.0.0.1       ip-172-31-23-126.ec2.internal ip-172-31-23-126
+172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
+172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
+172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
+172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
+
+
+
+
+[root@ip-172-31-26-157 vm]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
+127.0.0.1       ip-172-31-26-157.ec2.internal ip-172-31-26-157
+172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
+172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
+172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
+
+
+
+
+
+[root@ip-172-31-22-225 vm]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
+172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
+127.0.0.1       ip-172-31-22-225.ec2.internal ip-172-31-22-225
+172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
+172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
+
+
+
+
+[root@ip-172-31-21-240 vm]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
+172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
+172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
+127.0.0.1       ip-172-31-21-240.ec2.internal ip-172-31-21-240
+172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
+
+
+
+
+
+[root@ip-172-31-20-123 vm]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
+172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
+172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
+172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
+127.0.0.1       ip-172-31-20-123.ec2.internal ip-172-31-20-123
+
+
+
+
+
+
+[root@ip-172-31-23-126 vm]# systemctl status nscd
+● nscd.service - Name Service Cache Daemon
+   Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:32:31 UTC; 4s ago
+  Process: 30369 ExecStart=/usr/sbin/nscd $NSCD_OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30370 (nscd)
    CGroup: /system.slice/nscd.service
-           +-22411 /usr/sbin/nscd
+           └─30370 /usr/sbin/nscd
 
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring directory `/etc` (2)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring file `/etc/hosts` (4)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring directory `/etc` (2)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring file `/etc/resolv.conf` (5)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring directory `/etc` (2)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring file `/etc/services` (6)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 monitoring directory `/etc` (2)
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 disabled inotify-based monitoring for file `/etc/netgroup': No such file or directory
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal nscd[22411]: 22411 stat failed for file `/etc/netgroup'; will try again later: No such file or directory
-Apr 03 16:40:04 ip-10-79-133-7.ec2.internal systemd[1]: Started Name Service Cache Daemon.
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 monitoring file `/etc/hosts` (4)
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 monitoring directory `/etc` (2)
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 monitoring file `/etc/resolv.conf` (5)
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 monitoring directory `/etc` (2)
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 monitoring file `/etc/services` (6)
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 monitoring directory `/etc` (2)
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 disabled inotify-based monitoring for file `/etc/netgroup...ctory
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 stat failed for file `/etc/netgroup'; will try again late...ctory
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal nscd[30370]: 30370 Access Vector Cache (AVC) started
+Dec 05 13:32:31 ip-172-31-23-126.us-east-2.compute.internal systemd[1]: Started Name Service Cache Daemon.
+Hint: Some lines were ellipsized, use -l to show in full.
 
-[root@ip-10-79-133-7 ~]# systemctl status ntpd.service
-? ntpd.service - Network Time Service
-   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-03 16:43:10 UTC; 11s ago
-  Process: 22585 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
- Main PID: 22586 (ntpd)
+
+
+
+[root@ip-172-31-23-126 vm]# systemctl status ntpd
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:35:13 UTC; 15s ago
+  Process: 30406 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30407 (ntpd)
    CGroup: /system.slice/ntpd.service
-           +-22586 /usr/sbin/ntpd -u ntp:ntp -g
+           └─30407 /usr/sbin/ntpd -u ntp:ntp -g
 
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: Listen normally on 2 lo 127.0.0.1 UDP 123
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: Listen normally on 3 eth0 10.79.133.7 UDP 123
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: Listen normally on 4 lo ::1 UDP 123
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: Listen normally on 5 eth0 fe80::2000:aff:fe4f:8507 UDP 123
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: Listening on routing socket on fd #22 for interface updates
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal systemd[1]: Started Network Time Service.
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: 0.0.0.0 c016 06 restart
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM
-Apr 03 16:43:10 ip-10-79-133-7.ec2.internal ntpd[22586]: 0.0.0.0 c011 01 freq_not_set
-Apr 03 16:43:17 ip-10-79-133-7.ec2.internal ntpd[22586]: 0.0.0.0 c614 04 freq_mode
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: Listen and drop on 1 v6wildcard :: UDP 123
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: Listen normally on 2 lo 127.0.0.1 UDP 123
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: Listen normally on 3 eth0 172.31.23.126 UDP 123
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: Listen normally on 4 lo ::1 UDP 123
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: Listen normally on 5 eth0 fe80::40e:f6ff:fe89:19ac UDP 123
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: Listening on routing socket on fd #22 for interface updates
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: 0.0.0.0 c016 06 restart
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM
+Dec 05 13:35:13 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: 0.0.0.0 c011 01 freq_not_set
+Dec 05 13:35:20 ip-172-31-23-126.us-east-2.compute.internal ntpd[30407]: 0.0.0.0 c614 04 freq_mode
 
-[root@ip-10-79-133-7 ~]# ls -lahtr /usr/share/java/mysql-connector-java.jar
--rw-r--r-- 1 root root 970K Apr  3 17:02 /usr/share/java/mysql-connector-java.jar
 
-[root@ip-10-79-133-7 ~]# systemctl status mariadb.service 
-? mariadb.service - MariaDB database server
-   Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; vendor preset: disabled)
-   Active: active (running) since Mon 2017-04-03 17:05:41 UTC; 27s ago
-  Process: 9772 ExecStartPost=/usr/libexec/mariadb-wait-ready $MAINPID (code=exited, status=0/SUCCESS)
-  Process: 9743 ExecStartPre=/usr/libexec/mariadb-prepare-db-dir %n (code=exited, status=0/SUCCESS)
- Main PID: 9771 (mysqld_safe)
-   CGroup: /system.slice/mariadb.service
-           +- 9771 /bin/sh /usr/bin/mysqld_safe --basedir=/usr
-           +-10177 /usr/libexec/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib64/mysql/plugin --log-error=/var/log/mariadb/mariadb.log --...
 
-Apr 03 17:05:39 ip-10-79-133-7.ec2.internal systemd[1]: Starting MariaDB database server...
-Apr 03 17:05:39 ip-10-79-133-7.ec2.internal mysqld_safe[9771]: 170403 17:05:39 mysqld_safe Logging to '/var/log/mariadb/mariadb.log'.
-Apr 03 17:05:39 ip-10-79-133-7.ec2.internal mysqld_safe[9771]: 170403 17:05:39 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
-Apr 03 17:05:41 ip-10-79-133-7.ec2.internal systemd[1]: Started MariaDB database server.
-```
+
+[root@ip-172-31-26-157 vm]# systemctl status ntpd
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:40:33 UTC; 21s ago
+  Process: 30162 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30163 (ntpd)
+   CGroup: /system.slice/ntpd.service
+           └─30163 /usr/sbin/ntpd -u ntp:ntp -g
+
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: Listen normally on 2 lo 127.0.0.1 UDP 123
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: Listen normally on 3 eth0 172.31.26.157 UDP 123
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: Listen normally on 4 lo ::1 UDP 123
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: Listen normally on 5 eth0 fe80::42e:69ff:feb8:f3a2 UDP 123
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: Listening on routing socket on fd #22 for interface updates
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal systemd[1]: Started Network Time Service.
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: 0.0.0.0 c016 06 restart
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM
+Dec 05 13:40:33 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: 0.0.0.0 c011 01 freq_not_set
+Dec 05 13:40:40 ip-172-31-26-157.us-east-2.compute.internal ntpd[30163]: 0.0.0.0 c614 04 freq_mode
+
+
+
+
+[root@ip-172-31-22-225 vm]# systemctl start ntpd
+[root@ip-172-31-22-225 vm]# systemctl status ntpd
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:40:38 UTC; 21s ago
+  Process: 30186 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30187 (ntpd)
+   CGroup: /system.slice/ntpd.service
+           └─30187 /usr/sbin/ntpd -u ntp:ntp -g
+
+Dec 05 13:40:38 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: Listen normally on 2 lo 127.0.0.1 UDP 123
+Dec 05 13:40:38 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: Listen normally on 3 eth0 172.31.22.225 UDP 123
+Dec 05 13:40:38 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: Listen normally on 4 lo ::1 UDP 123
+Dec 05 13:40:38 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: Listen normally on 5 eth0 fe80::416:31ff:fe0a:84e UDP 123
+Dec 05 13:40:38 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: Listening on routing socket on fd #22 for interface updates
+Dec 05 13:40:38 ip-172-31-22-225.us-east-2.compute.internal systemd[1]: Started Network Time Service.
+Dec 05 13:40:39 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: 0.0.0.0 c016 06 restart
+Dec 05 13:40:39 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM
+Dec 05 13:40:39 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: 0.0.0.0 c011 01 freq_not_set
+Dec 05 13:40:45 ip-172-31-22-225.us-east-2.compute.internal ntpd[30187]: 0.0.0.0 c614 04 freq_mode
+[root@ip-172-31-22-225 vm]#
+
+
+
+
+
+
+[root@ip-172-31-21-240 vm]# systemctl start ntpd
+[root@ip-172-31-21-240 vm]# systemctl status ntpd
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:40:43 UTC; 22s ago
+  Process: 30172 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30173 (ntpd)
+   CGroup: /system.slice/ntpd.service
+           └─30173 /usr/sbin/ntpd -u ntp:ntp -g
+
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: Listen normally on 2 lo 127.0.0.1 UDP 123
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: Listen normally on 3 eth0 172.31.21.240 UDP 123
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: Listen normally on 4 lo ::1 UDP 123
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: Listen normally on 5 eth0 fe80::4fa:a7ff:fe04:fe9e UDP 123
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: Listening on routing socket on fd #22 for interface updates
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal systemd[1]: Started Network Time Service.
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: 0.0.0.0 c016 06 restart
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM
+Dec 05 13:40:43 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: 0.0.0.0 c011 01 freq_not_set
+Dec 05 13:40:50 ip-172-31-21-240.us-east-2.compute.internal ntpd[30173]: 0.0.0.0 c614 04 freq_mode
+
+
+
+
+
+[root@ip-172-31-20-123 vm]# systemctl start ntpd
+[root@ip-172-31-20-123 vm]# systemctl status ntpd
+● ntpd.service - Network Time Service
+   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:40:47 UTC; 23s ago
+  Process: 30161 ExecStart=/usr/sbin/ntpd -u ntp:ntp $OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30162 (ntpd)
+   CGroup: /system.slice/ntpd.service
+           └─30162 /usr/sbin/ntpd -u ntp:ntp -g
+
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: Listen normally on 2 lo 127.0.0.1 UDP 123
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: Listen normally on 3 eth0 172.31.20.123 UDP 123
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: Listen normally on 4 lo ::1 UDP 123
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: Listen normally on 5 eth0 fe80::4bf:4fff:fefe:62b8 UDP 123
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: Listening on routing socket on fd #22 for interface updates
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: 0.0.0.0 c016 06 restart
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: 0.0.0.0 c012 02 freq_set kernel 0.000 PPM
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: 0.0.0.0 c011 01 freq_not_set
+Dec 05 13:40:47 ip-172-31-20-123.us-east-2.compute.internal systemd[1]: Started Network Time Service.
+Dec 05 13:40:55 ip-172-31-20-123.us-east-2.compute.internal ntpd[30162]: 0.0.0.0 c614 04 freq_mode
+
+
+
+
+
+
+[root@ip-172-31-26-157 vm]# systemctl start nscd
+[root@ip-172-31-26-157 vm]# systemctl status nscd
+● nscd.service - Name Service Cache Daemon
+   Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:42:10 UTC; 22s ago
+  Process: 30172 ExecStart=/usr/sbin/nscd $NSCD_OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30173 (nscd)
+   CGroup: /system.slice/nscd.service
+           └─30173 /usr/sbin/nscd
+
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 monitoring directory `/etc` (2)
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 monitoring file `/etc/resolv.conf` (5)
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 monitoring directory `/etc` (2)
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 monitoring file `/etc/services` (6)
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 monitoring directory `/etc` (2)
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 disabled inotify-based monitoring for file `/etc/netgroup...ctory
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 stat failed for file `/etc/netgroup'; will try again late...ctory
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 Access Vector Cache (AVC) started
+Dec 05 13:42:10 ip-172-31-26-157.us-east-2.compute.internal systemd[1]: Started Name Service Cache Daemon.
+Dec 05 13:42:29 ip-172-31-26-157.us-east-2.compute.internal nscd[30173]: 30173 checking for monitored file `/etc/netgroup': No such file...ctory
+Hint: Some lines were ellipsized, use -l to show in full.
+[root@ip-172-31-26-157 vm]#
+
+
+
+
+[root@ip-172-31-22-225 vm]# systemctl status nscd
+● nscd.service - Name Service Cache Daemon
+   Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:42:19 UTC; 44s ago
+  Process: 30195 ExecStart=/usr/sbin/nscd $NSCD_OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30196 (nscd)
+   CGroup: /system.slice/nscd.service
+           └─30196 /usr/sbin/nscd
+
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 monitoring directory `/etc` (2)
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 monitoring file `/etc/resolv.conf` (5)
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 monitoring directory `/etc` (2)
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 monitoring file `/etc/services` (6)
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 monitoring directory `/etc` (2)
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 disabled inotify-based monitoring for file `/etc/netgroup...ctory
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 stat failed for file `/etc/netgroup'; will try again late...ctory
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 Access Vector Cache (AVC) started
+Dec 05 13:42:19 ip-172-31-22-225.us-east-2.compute.internal systemd[1]: Started Name Service Cache Daemon.
+Dec 05 13:42:38 ip-172-31-22-225.us-east-2.compute.internal nscd[30196]: 30196 checking for monitored file `/etc/netgroup': No such file...ctory
+Hint: Some lines were ellipsized, use -l to show in full.
+
+
+
+[root@ip-172-31-21-240 vm]# systemctl status nscd
+● nscd.service - Name Service Cache Daemon
+   Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:42:23 UTC; 1min 12s ago
+  Process: 30181 ExecStart=/usr/sbin/nscd $NSCD_OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30182 (nscd)
+   CGroup: /system.slice/nscd.service
+           └─30182 /usr/sbin/nscd
+
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 monitoring directory `/etc` (2)
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 monitoring file `/etc/resolv.conf` (5)
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 monitoring directory `/etc` (2)
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 monitoring file `/etc/services` (6)
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 monitoring directory `/etc` (2)
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 disabled inotify-based monitoring for file `/etc/netgroup...ctory
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 stat failed for file `/etc/netgroup'; will try again late...ctory
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 Access Vector Cache (AVC) started
+Dec 05 13:42:23 ip-172-31-21-240.us-east-2.compute.internal systemd[1]: Started Name Service Cache Daemon.
+Dec 05 13:42:42 ip-172-31-21-240.us-east-2.compute.internal nscd[30182]: 30182 checking for monitored file `/etc/netgroup': No such file...ctory
+Hint: Some lines were ellipsized, use -l to show in full.
+
+
+
+
+][root@ip-172-31-20-123 vm]# systemctl status nscd
+● nscd.service - Name Service Cache Daemon
+   Loaded: loaded (/usr/lib/systemd/system/nscd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2017-12-05 13:42:26 UTC; 1min 25s ago
+  Process: 30193 ExecStart=/usr/sbin/nscd $NSCD_OPTIONS (code=exited, status=0/SUCCESS)
+ Main PID: 30194 (nscd)
+   CGroup: /system.slice/nscd.service
+           └─30194 /usr/sbin/nscd
+
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 monitoring directory `/etc` (2)
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 monitoring file `/etc/resolv.conf` (5)
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 monitoring directory `/etc` (2)
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 monitoring file `/etc/services` (6)
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 monitoring directory `/etc` (2)
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 disabled inotify-based monitoring for file `/etc/netgroup...ctory
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 stat failed for file `/etc/netgroup'; will try again late...ctory
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 Access Vector Cache (AVC) started
+Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal systemd[1]: Started Name Service Cache Daemon.
+Dec 05 13:42:45 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 checking for monitored file `/etc/netgroup': No such file...ctory
+Hint: Some lines were ellipsized, use -l to show in full.
