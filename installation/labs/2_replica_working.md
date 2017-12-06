@@ -75,21 +75,23 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]> CHANGE MASTER TO MASTER_HOST='ip-172-31-23-126.ec2.internal', MASTER_USER='replicator', MASTER_PASSWORD='#semantix@', MASTER_LOG_FILE='mysql_binary_log.000005', MASTER_LOG_POS=425;
 Query OK, 0 rows affected (0.01 sec)
 
-MariaDB [(none)]> start slave;
-Query OK, 0 rows affected (0.00 sec)
+
+
+MariaDB [(none)]> START SLAVE;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 MariaDB [(none)]> SHOW SLAVE STATUS \G
 *************************** 1. row ***************************
                Slave_IO_State: Waiting for master to send event
-                  Master_Host: ip-172-31-23-126.ec2.internal
+                  Master_Host: ip-172-31-23-126.us-east-2.compute.internal
                   Master_User: replicator
                   Master_Port: 3306
                 Connect_Retry: 60
-              Master_Log_File: mysql_binary_log.000005
-          Read_Master_Log_Pos: 425
-               Relay_Log_File: mariadb-relay-bin.000002
-                Relay_Log_Pos: 536
-        Relay_Master_Log_File: mysql_binary_log.000005
+              Master_Log_File: mysql_binary_log.000011
+          Read_Master_Log_Pos: 439
+               Relay_Log_File: mariadb-relay-bin.000005
+                Relay_Log_Pos: 730
+        Relay_Master_Log_File: mysql_binary_log.000011
              Slave_IO_Running: Yes
             Slave_SQL_Running: Yes
               Replicate_Do_DB:
@@ -101,8 +103,8 @@ MariaDB [(none)]> SHOW SLAVE STATUS \G
                    Last_Errno: 0
                    Last_Error:
                  Skip_Counter: 0
-          Exec_Master_Log_Pos: 425
-              Relay_Log_Space: 832
+          Exec_Master_Log_Pos: 439
+              Relay_Log_Space: 1317
               Until_Condition: None
                Until_Log_File:
                 Until_Log_Pos: 0
@@ -121,4 +123,3 @@ Master_SSL_Verify_Server_Cert: No
   Replicate_Ignore_Server_Ids:
              Master_Server_Id: 1
 1 row in set (0.00 sec)
-
