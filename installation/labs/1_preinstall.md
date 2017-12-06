@@ -239,70 +239,15 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 
 
-[root@ip-172-31-23-126 vm]# cat /etc/hosts
+[root@ip-172-31-23-126 vm]# getent hosts
+
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-
-127.0.0.1       ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-[root@ip-172-31-26-157 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-127.0.0.1       ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-
-[root@ip-172-31-22-225 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-127.0.0.1       ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-[root@ip-172-31-21-240 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-127.0.0.1       ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-
-[root@ip-172-31-20-123 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-127.0.0.1       ip-172-31-20-123.ec2.internal ip-172-31-20-123
+172.31.23.126   ip-172-31-23-126.us-east-2.compute.internal ip-172-31-23-126
+172.31.26.157   ip-172-31-26-157.us-east-2.compute.internal ip-172-31-26-157
+172.31.22.225   ip-172-31-22-225.us-east-2.compute.internal ip-172-31-22-225
+172.31.21.240   ip-172-31-21-240.us-east-2.compute.internal ip-172-31-21-240
+172.31.20.123   ip-172-31-20-123.us-east-2.compute.internal ip-172-31-20-123
 
 
 
