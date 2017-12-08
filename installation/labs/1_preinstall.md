@@ -1,31 +1,25 @@
-Evidências Laboratório
+# 1_preinstall.md
 
-Swappiness 1:
+# Swappiness 1:
 
-[root@ip-172-31-23-126 vm]# cat swappiness
+[root@ip-172-31-23-126 vm]# cat /proc/sys/vm/swappiness
 1
 
-
-[root@ip-172-31-26-157 vm]# cat swappiness
+[root@ip-172-31-26-157 vm]# cat /proc/sys/vm/swappiness
 1
 
-
-[root@ip-172-31-22-225 vm]# cat swappiness
+[root@ip-172-31-22-225 vm]# cat /proc/sys/vm/swappiness
 1
 
-
-[root@ip-172-31-21-240 vm]# cat swappiness
+[root@ip-172-31-21-240 vm]# cat /proc/sys/vm/swappiness
 1
 
-
-[root@ip-172-31-20-123 vm]# cat swappiness
+[root@ip-172-31-20-123 vm]# cat /proc/sys/vm/swappiness
 1
 
+# Huge Pages:
 
-Huge Pages:
-
-
-[root@ip-172-31-23-126 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
+[[root@ip-172-31-23-126 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
 [root@ip-172-31-23-126 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
 always madvise [never]
 
@@ -46,7 +40,7 @@ always madvise [never]
 
 [root@ip-172-31-20-123 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
 [root@ip-172-31-20-123 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
-always madvise [never]
+always madvise [never]][[root@ip-172-31-23-126Vm]#Echo'never']
 
 
 Interfaces:
@@ -168,67 +162,11 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 
-127.0.0.1       ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-[root@ip-172-31-26-157 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-127.0.0.1       ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-
-[root@ip-172-31-22-225 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-127.0.0.1       ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-[root@ip-172-31-21-240 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-127.0.0.1       ip-172-31-21-240.ec2.internal ip-172-31-21-240
-172.31.20.123   ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
-
-
-
-[root@ip-172-31-20-123 vm]# cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-
-172.31.23.126   ip-172-31-23-126.ec2.internal ip-172-31-23-126
-172.31.26.157   ip-172-31-26-157.ec2.internal ip-172-31-26-157
-172.31.22.225   ip-172-31-22-225.ec2.internal ip-172-31-22-225
-172.31.21.240   ip-172-31-21-240.ec2.internal ip-172-31-21-240
-127.0.0.1       ip-172-31-20-123.ec2.internal ip-172-31-20-123
-
-
+172.31.23.126   ip-172-31-23-126.us-east-2.compute.internal ip-172-31-23-126
+172.31.26.157   ip-172-31-26-157.us-east-2.compute.internal ip-172-31-26-157
+172.31.22.225   ip-172-31-22-225.us-east-2.compute.internal ip-172-31-22-225
+172.31.21.240   ip-172-31-21-240.us-east-2.compute.internal ip-172-31-21-240
+172.31.20.123   ip-172-31-20-123.us-east-2.compute.internal ip-172-31-20-123
 
 
 
@@ -476,3 +414,4 @@ Dec 05 13:42:45 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 c
 Hint: Some lines were ellipsized, use -l to show in full.
 
 
+[[root@ip-172-31-23-126Vm]#Echo'never']: 
