@@ -1,7 +1,7 @@
 # 1_preinstall.md
 
 # Swappiness 1:
-'''
+```
 root@ip-172-31-23-126 vm]# cat /proc/sys/vm/swappiness
 1
 
@@ -16,9 +16,9 @@ root@ip-172-31-23-126 vm]# cat /proc/sys/vm/swappiness
 
 [root@ip-172-31-20-123 vm]# cat /proc/sys/vm/swappiness
 1
-'''
+```
 # Huge Pages:
-'''
+```
 [[root@ip-172-31-23-126 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
 [root@ip-172-31-23-126 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
 always madvise [never]
@@ -41,10 +41,10 @@ always madvise [never]
 [root@ip-172-31-20-123 vm]# echo 'never' > /sys/kernel/mm/transparent_hugepage/defrag
 [root@ip-172-31-20-123 vm]# cat /sys/kernel/mm/transparent_hugepage/defrag
 always madvise [never]][[root@ip-172-31-23-126Vm]#Echo'never']
-'''
+```
 
 # Interfaces:
-'''
+```
 [root@ip-172-31-23-126 vm]# ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
         inet 172.31.23.126  netmask 255.255.240.0  broadcast 172.31.31.255
@@ -153,11 +153,11 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         TX packets 6  bytes 416 (416.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
-'''
+```
 
 # Hosts
 
-'''
+```
 [root@ip-172-31-23-126 vm]# cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
@@ -167,10 +167,10 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 172.31.22.225   ip-172-31-22-225.us-east-2.compute.internal ip-172-31-22-225
 172.31.21.240   ip-172-31-21-240.us-east-2.compute.internal ip-172-31-21-240
 172.31.20.123   ip-172-31-20-123.us-east-2.compute.internal ip-172-31-20-123
-
+```
 
 # Services
-'''
+```
 
 [root@ip-172-31-23-126 vm]# systemctl status nscd
 ● nscd.service - Name Service Cache Daemon
@@ -416,5 +416,5 @@ Dec 05 13:42:26 ip-172-31-20-123.us-east-2.compute.internal systemd[1]: Started 
 Dec 05 13:42:45 ip-172-31-20-123.us-east-2.compute.internal nscd[30194]: 30194 checking for monitored file `/etc/netgroup': No such file...ctory
 Hint: Some lines were ellipsized, use -l to show in full.
 
-'''
+```
 [[root@ip-172-31-23-126Vm]#Echo'never']: 
