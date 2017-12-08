@@ -1,44 +1,30 @@
-```
+enterprise/labs/4_API_upgrade_calls.md
+
+
+[root@ip-172-31-23-126 ~]# curl -u admin:admin   'http://localhost:7180/api/v1/cm/version'
 {
-  "name" : "hive",
-  "type" : "HIVE",
-  "clusterRef" : {
-    "clusterName" : "cluster"
-  },
-  "serviceUrl" : "http://ip-10-230-82-86.ec2.internal:7180/cmf/serviceRedirect/hive",
-  "serviceState" : "STARTED",
-  "healthSummary" : "GOOD",
-  "healthChecks" : [ {
-    "name" : "HIVE_HIVEMETASTORES_HEALTHY",
-    "summary" : "GOOD"
+  "version" : "5.12.1",
+  "buildUser" : "jenkins",
+  "buildTimestamp" : "20170818-0807",
+  "gitHash" : "9bdee611802535491d400e03c98ef694a2c77d0a",
+  "snapshot" : false
+}[root@ip-172-31-23-126 ~]#
+
+___________________
+
+
+
+[root@ip-172-31-23-126 ~]# curl -u admin:admin   'http://localhost:7180/api/v1/users'
+{
+  "items" : [ {
+    "name" : "admin",
+    "roles" : [ "ROLE_ADMIN" ]
   }, {
-    "name" : "HIVE_HIVESERVER2S_HEALTHY",
-    "summary" : "GOOD"
-  } ],
-  "configStale" : false
-```
+    "name" : "tarkin",
+    "roles" : [ "ROLE_ADMIN" ]
+  } ]
+}[root@ip-172-31-23-126 ~]#
 
-```
-{
-  "id" : 451,
-  "name" : "Stop",
-  "startTime" : "2017-04-05T14:03:07.493Z",
-  "active" : true,
-  "serviceRef" : {
-    "clusterName" : "cluster",
-    "serviceName" : "hive"
-  }
-```
 
-```
-{
-  "id" : 455,
-  "name" : "Start",
-  "startTime" : "2017-04-05T14:03:52.676Z",
-  "active" : true,
-  "serviceRef" : {
-    "clusterName" : "cluster",
-    "serviceName" : "hive"
-  }
+________________
 
-```
